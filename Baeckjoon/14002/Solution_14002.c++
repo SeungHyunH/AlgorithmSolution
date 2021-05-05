@@ -36,8 +36,30 @@ void solution() {
 	for (int i = 0; i < ans.size(); i++) { cout << ans[i] << " "; }
 }
 
+void solution2() {//vector를 이용한 풀이
+	int N,maxindex = 0;
+	cin >> N;
+	int data[1001];
+	vector<vector<int>> dp;
+	for (int i = 0; i < N; i++) {cin >> data[i]; dp.push_back(vector<int>()); dp[i].push_back(data[i]);}
+	for (int i = 0; i < N; i++) {
+		for (int j = 0; j < i; j++) {
+			if (data[i] > data[j]) { 
+				if (dp[i].size() < dp[j].size() + 1) {
+					dp[i].clear();
+					dp[i].assign(dp[j].begin(), dp[j].end());
+					dp[i].push_back(data[i]);
+				}
+			}
+		}
+		if (dp[maxindex].size() < dp[i].size()) { maxindex = i; }
+	}
+	cout << dp[maxindex].size() << "\n";
+	for (int i = 0; i < dp[maxindex].size(); i++) { cout << dp[maxindex][i] << " "; }
+}
+
 int main(void) {
 	ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
-	solution();
+	solution2();
 	return 0;
 }
