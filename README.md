@@ -10,3 +10,5 @@
   - 2021-05-06 : contribution이 push를 했음에도 반영이 안되는 에러를 발견했습니다.
     - contribution이 반영되기 위해서는 로컬공간에서 email설정이 안되면 반영이 안되는 것이라고 합니다.
     - git config --global user.email "이메일" 로 설정하고 git config --global user.email 으로 이메일설정을 확인할 수 있었습니다.
+
+- 05-~15 이번주 목표
