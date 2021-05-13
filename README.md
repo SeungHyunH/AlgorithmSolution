@@ -10,5 +10,8 @@
   - 2021-05-06 : contribution이 push를 했음에도 반영이 안되는 에러를 발견했습니다.
     - contribution이 반영되기 위해서는 로컬공간에서 email설정이 안되면 반영이 안되는 것이라고 합니다.
     - git config --global user.email "이메일" 로 설정하고 git config --global user.email 으로 이메일설정을 확인할 수 있었습니다.
+  3. 목표달성하지 못한 것 : 알고리즘 정리, https://www.acmicpc.net/problem/2618 번풀이(어려워서 날잡고 정리해야 될거같다.)
 
 - 05-~15 이번주 목표
+  1. 투포인터 및 트리 완료 https://www.acmicpc.net/step/59 https://www.acmicpc.net/step/23
+  2. 지난주 목표달성 하지 못한 알고리즘 정리 완료
