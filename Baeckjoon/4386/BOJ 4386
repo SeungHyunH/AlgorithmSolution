@@ -1,0 +1,74 @@
+#include <iostream>
+#include <string>
+#include <algorithm>
+#include <functional>
+#include <queue>
+#include <vector>
+#include <map>
+#include <set>
+#include <cmath>
+#define MAX 100+1
+#define INF 987654321
+using namespace std;
+
+typedef long long ll;
+typedef pair<int, int> pii;
+
+int n;
+vector<pair<double, double>>Node;
+vector<pair<double,pii>> Edge;
+int parent[MAX];
+
+int Find(int num) {
+	if (parent[num] == num) { return num; }
+	return parent[num] = Find(parent[num]);
+}
+
+void Union(int a, int b) {
+	if (a != b) {
+		parent[b] = a;
+	}
+}
+
+void solution() {
+	double ans = 0;
+	cin >> n;
+
+	for (int i = 0; i < n; i++) {
+		double a, b; cin >> a >> b;
+		Node.push_back({ a,b });
+		parent[i] = i;
+	}
+	for (int i = 0; i < n; i++) {
+		double x1 = Node[i].first;
+		double y1 = Node[i].second;
+		for (int j = i+1; j < n; j++) {
+			double x2 = Node[j].first;
+			double y2 = Node[j].second;
+
+			double dist = sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
+			Edge.push_back({ dist,{i,j} });
+		}
+	}
+	sort(Edge.begin(), Edge.end());
+	for (int i = 0; i < Edge.size(); i++) {
+		double dist = Edge[i].first;
+		int Node1 = Edge[i].second.first;
+		int Node2 = Edge[i].second.second;
+		int parent1 = Find(Node1);
+		int parent2 = Find(Node2);
+		if (parent1 != parent2) {
+			Union(parent1, parent2);
+			ans = ans + dist;
+		}
+	}
+	cout << ans << "\n";
+}
+
+int main(void) {
+	ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+	cout << fixed;
+	cout.precision(2);
+	solution();
+	return 0;
+}
